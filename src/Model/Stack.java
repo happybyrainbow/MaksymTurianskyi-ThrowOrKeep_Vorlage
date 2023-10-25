@@ -17,14 +17,16 @@ package Model;
  * @author Qualitaets- und UnterstuetzungsAgentur - Landesinstitut fuer Schule
  * @version Generisch_02 2014-02-21
  */
-//TODO 1: Ändere die Klasse Stack derart, dass sie eine generische Klasse ist. Nenne den Typparameter "ContentType"
-public class Stack {
+//TODO 1: Ändere die Klasse Stack derart, dass sie eine generische Klasse ist. Nenne den Typparameter "ContentType".
+// Hinweis: Auch die innere Klasse muss an einer Stelle angepasst werden.
+
+public class Stack<ContentType> {
 
     /* --------- Anfang der privaten inneren Klasse -------------- */
 
     private class StackNode {
 
-        private Object content = null;
+        private ContentType content = null;
         private StackNode nextNode = null;
 
         /**
@@ -33,8 +35,10 @@ public class Stack {
          *
          * @param pContent der Inhalt des Knotens
          */
-        public StackNode(Object pContent) {
+        public StackNode(ContentType pContent) {
             //TODO 2: Implementiere den Konstruktor der inneren Klasse StackNode
+            content = pContent;
+
         }
 
         /**
@@ -45,6 +49,7 @@ public class Stack {
          */
         public void setNext(StackNode pNext) {
             //TODO 3: Implementiere die Methode, wie sie im Kommentar beschrieben ist.
+            this.nextNode = pNext;
         }
 
         /**
@@ -58,7 +63,7 @@ public class Stack {
         /**
          * @return das Inhaltsobjekt vom Typ ContentType
          */
-        public Object getContent() {
+        public ContentType getContent() {
             return content;
         }
     }
@@ -83,9 +88,11 @@ public class Stack {
      */
     public boolean isEmpty() {
         //TODO 4: Implementiere die Methode wie im Kommentar beschrieben
+        if (head == null) {
+            return true;
+        }
         return false;
     }
-
     /**
      * Das Objekt pContent wird oben auf den Stapel gelegt. Falls
      * pContent gleich null ist, bleibt der Stapel unveraendert.
@@ -93,8 +100,13 @@ public class Stack {
      * @param pContent
      *        das einzufuegende Objekt vom Typ ContentType
      */
-    public void push(Object pContent) {
+    public void push(ContentType pContent) {
         //TODO 5: Implementiere die Methode push(). Wenn pContent nicht null ist, wird das Objekt auf den Stapel gelegt
+            if(pContent != null){
+                StackNode newNode = new StackNode(pContent);
+                newNode.setNext(head);
+                head = newNode;
+            }
     }
 
     /**
@@ -103,6 +115,9 @@ public class Stack {
      */
     public void pop() {
         //TODO 6: Implementiere die Methode pop(). Achtung! Es gibt keine RÜckgabe, wenn ein Objekt aus dem Stapel entfernt wird.
+        if(head != null){
+            head = head.getNext();
+        }
     }
 
     /**
@@ -112,8 +127,11 @@ public class Stack {
      * @return das oberste Stackelement vom Typ ContentType oder null, falls
      *         der Stack leer ist
      */
-    public Object top() {
+    public ContentType top() {
         //TODO 7: Implementiere die Methode top(). Achtung! Der Stapel bleibt dabei unverändert!
+        if(!isEmpty()){
+            return head.getContent();
+        }
         return null;
     }
 }

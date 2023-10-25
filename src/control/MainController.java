@@ -4,14 +4,11 @@ import view.ViewWindow;
 import Model.Card;
 import Model.Stack;
 
+
 public class MainController {
 
     private Stack<Card> stackOrigin;  //Ursprünglicher Stapel mit zufälligen Zahlen/Karten
     private Stack<Card> stackKeep;    //Stapel der Karten, der behalten wird
-
-    public static void main(String[] args) {
-        new MainController();
-    }
 
     public MainController() {
         new ViewWindow(this);
@@ -24,7 +21,10 @@ public class MainController {
      * Zufallswert: Z.b.: Math.random() -> Double zwischen 0 und 1
      */
     public void startProgram() {
-        //TODO: Implementiere die Methode gemäß des Kommentars
+        //TODO 8: Implementiere die Methode gemäß des Kommentars
+        for (int i = 0; i <= 20 ; i++) {
+            stackOrigin.push(new Card((int)Math.random() + 1 * 13));
+        }
     }
 
     /**
@@ -32,7 +32,9 @@ public class MainController {
      * @return Wert der obersten Karte oder -1
      */
     public int showNextCard() {
-        //TODO: Implementiere die Methode gemäß des Kommentars
+        //TODO 9: Implementiere die Methode gemäß des Kommentars
+        if(stackOrigin.top() != null)
+            return 
         return -1;
     }
 
@@ -41,7 +43,7 @@ public class MainController {
      * @return true, falls eine Karte auf stackKeep gelegt wird, sonst false.
      */
     public boolean keep() {
-        //TODO: Implementiere die Methode gemäß des Kommentars
+        //TODO 10: Implementiere die Methode gemäß des Kommentars
         return false;
     }
 
@@ -50,7 +52,7 @@ public class MainController {
      * @return true, falls eine Karte auf stackOrigin entfernt wird, sonst false.
      */
     public boolean throwCard() {
-        //TODO: Implementiere die Methode gemäß des Kommentars
+        //TODO 11: Implementiere die Methode gemäß des Kommentars
         return false;
     }
 
@@ -60,7 +62,7 @@ public class MainController {
      * @return Die Anzahl der abgelegten Karten, falls stackKeep regelkonform ist, sonst -1.
      */
     public int inspect() {
-        //TODO: Implementiere die Methode gemäß des Kommentars
+        //TODO 12: Implementiere die Methode gemäß des Kommentars
         return -1;
     }
 

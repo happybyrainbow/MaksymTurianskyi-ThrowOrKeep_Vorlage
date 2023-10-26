@@ -33,9 +33,10 @@ public class MainController {
      */
     public int showNextCard() {
         //TODO 9: Implementiere die Methode gemäß des Kommentars
-        if(stackOrigin.top() != null)
-            return 
-        return -1;
+        if(stackOrigin.top() == null) {
+            return -1;
+        }
+       return stackOrigin.top().getWert();
     }
 
     /**
@@ -44,6 +45,10 @@ public class MainController {
      */
     public boolean keep() {
         //TODO 10: Implementiere die Methode gemäß des Kommentars
+        if(!cardStackEmpty()){
+            stackKeep.push(stackOrigin.top());
+            return true;
+        }
         return false;
     }
 
@@ -53,6 +58,10 @@ public class MainController {
      */
     public boolean throwCard() {
         //TODO 11: Implementiere die Methode gemäß des Kommentars
+        if(!cardStackEmpty()){
+            stackOrigin.pop();
+            return true;
+        }
         return false;
     }
 
@@ -63,6 +72,14 @@ public class MainController {
      */
     public int inspect() {
         //TODO 12: Implementiere die Methode gemäß des Kommentars
+        int count = 0;
+        Stack<Card> hilfe = new Stack<>();
+        hilfe = stackKeep;
+        while(!hilfe.isEmpty()){
+            hilfe.pop();;
+            count++;
+            return count;
+            }
         return -1;
     }
 

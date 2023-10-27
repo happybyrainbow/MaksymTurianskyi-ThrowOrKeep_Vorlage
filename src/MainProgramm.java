@@ -1,7 +1,7 @@
 import control.MainController;
 
-public class Main {
+public class MainProgramm {
     public static void main(String[] args) {
-
+        new MainController();
     }
 }
